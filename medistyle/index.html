@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Textiles Sensibles – Tissus pour peaux allergiques et usage médical</title>
+<meta name="description" content="Tissus doux et lavables pour peaux sensibles, allergies, literie anti-acariens et usage médical.">
+<style>
+  :root {
+    --paper: #f5f7f6; --ink: #1b2a2e; --teal: #1f6f78; --mist: #ddebea; --line: #c4d3d1; --muted: #4d6064;
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.6; }
+  a { color: var(--teal); }
+  :focus-visible { outline: 3px solid var(--teal); outline-offset: 3px; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
+
+  /* En-tête */
+  header.top { border-bottom: 1px solid var(--line); }
+  header.top .wrap { display: flex; justify-content: space-between; align-items: center; padding-top: 14px; padding-bottom: 14px; gap: 12px; flex-wrap: wrap; }
+  .brand { font-family: var(--serif); font-size: 1.3rem; font-weight: 700; text-decoration: none; color: var(--ink); }
+  nav a { margin-left: 18px; text-decoration: none; color: var(--ink); }
+  nav a:hover { text-decoration: underline; }
+
+  /* Accueil : bandeau en tissage */
+  .hero { position: relative; padding: 72px 0 64px; background:
+      repeating-linear-gradient(0deg, rgba(31,111,120,.08) 0 2px, transparent 2px 7px),
+      repeating-linear-gradient(90deg, rgba(31,111,120,.08) 0 2px, transparent 2px 7px), var(--mist); }
+  .hero h1 { font-family: var(--serif); font-size: clamp(2rem, 5.5vw, 3.6rem); line-height: 1.1; max-width: 18ch; margin: 0 0 18px; }
+  .hero p { max-width: 52ch; font-size: 1.1rem; margin: 0 0 28px; }
+  .btn { display: inline-block; padding: 13px 22px; border-radius: 4px; font-weight: 600; text-decoration: none; border: 2px solid var(--teal); }
+  .btn.primary { background: var(--teal); color: #fff; }
+  .btn.ghost { color: var(--teal); background: transparent; margin-left: 8px; }
+
+  section { padding: 56px 0; }
+  h2 { font-family: var(--serif); font-size: 1.9rem; margin: 0 0 8px; }
+  .lead { color: var(--muted); max-width: 60ch; margin: 0 0 28px; }
+
+  /* Filtres */
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+  .filters button { font: inherit; padding: 9px 16px; border-radius: 999px; border: 1.5px solid var(--teal); background: transparent; color: var(--teal); cursor: pointer; }
+  .filters button[aria-pressed="true"] { background: var(--teal); color: #fff; }
+
+  /* Tissus */
+  .fabrics { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 40px; }
+  .fabric { display: grid; grid-template-columns: 112px 1fr; gap: 18px; padding: 22px 0; border-top: 1px solid var(--line); }
+  .fabric[hidden] { display: none; }
+  .swatch { width: 112px; height: 112px; border-radius: 2px; border: 1px solid var(--line); }
+  .s-coton { background: repeating-linear-gradient(0deg, #fff 0 3px, #ece6d8 3px 4px), repeating-linear-gradient(90deg, rgba(0,0,0,.05) 0 3px, transparent 3px 4px); background-color: #f4efe3; }
+  .s-micro { background: repeating-linear-gradient(45deg, #cfe0e3 0 2px, #e6f0f1 2px 4px); }
+  .s-bambou { background: repeating-linear-gradient(90deg, #dfe8d6 0 5px, #cfdcc3 5px 7px); }
+  .s-medical { background: repeating-linear-gradient(0deg, #fff 0 6px, #cfe3ee 6px 7px), repeating-linear-gradient(90deg, #fff 0 6px, #cfe3ee 6px 7px); }
+  .fabric h3 { font-family: var(--serif); margin: 0 0 4px; font-size: 1.2rem; }
+  .fabric p { margin: 0 0 6px; }
+  .fabric dl { margin: 0; font-size: .92rem; color: var(--muted); }
+  .fabric dt { display: inline; font-weight: 600; color: var(--ink); }
+  .fabric dd { display: inline; margin: 0 0 0 4px; }
+  .fabric dd::after { content: ""; display: block; }
+  .count { color: var(--muted); margin-top: -12px; margin-bottom: 18px; }
+
+  /* Engagements */
+  .band { background: var(--ink); color: #eef4f3; }
+  .band h2 { color: #fff; }
+  .commit { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 24px; }
+  .commit div { border-top: 2px solid var(--mist); padding-top: 14px; }
+  .commit h3 { margin: 0 0 6px; font-family: var(--serif); font-size: 1.15rem; color: #fff; }
+  .commit p { margin: 0; color: #cfdcdb; }
+
+  /* Contact */
+  .contact { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+  .contact ul { padding-left: 18px; margin: 0 0 20px; }
+
+  footer { border-top: 1px solid var(--line); padding: 28px 0 40px; color: var(--muted); font-size: .9rem; }
+
+  @media (max-width: 760px) {
+    .fabrics, .commit, .contact { grid-template-columns: 1fr; }
+    .fabric { grid-template-columns: 88px 1fr; }
+    .swatch { width: 88px; height: 88px; }
+    .hero { padding: 48px 0 44px; }
+    .btn.ghost { margin: 10px 0 0; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#">Médistyle</a>
+    <nav aria-label="Navigation principale">
+      <a href="#tissus">Nos tissus</a>
+      <a href="#engagements">Engagements</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="wrap">
+      <h1>Des tissus pensés pour les peaux qui réagissent.</h1>
+      <p>Coton, microfibres et tissus techniques pour les personnes allergiques, les peaux sensibles et les usages médicaux : literie, vêtements, protections.</p>
+      <a class="btn primary" href="#tissus">Voir les tissus</a>
+      <a class="btn ghost" href="#contact">Demander un échantillon</a>
+    </div>
+  </div>
+
+  <section id="tissus">
+    <div class="wrap">
+      <h2>Choisir un tissu selon le besoin</h2>
+      <p class="lead">Sélectionnez ce qui vous concerne pour afficher les tissus adaptés.</p>
+
+      <div class="filters" role="group" aria-label="Filtrer les tissus">
+        <button type="button" data-filter="tous" aria-pressed="true">Tous</button>
+        <button type="button" data-filter="sensible" aria-pressed="false">Peau sensible</button>
+        <button type="button" data-filter="acariens" aria-pressed="false">Acariens</button>
+        <button type="button" data-filter="lavage" aria-pressed="false">Lavage à haute température</button>
+        <button type="button" data-filter="medical" aria-pressed="false">Usage médical</button>
+      </div>
+      <p class="count" id="count" aria-live="polite"></p>
+
+      <div class="fabrics" id="fabrics">
+        <article class="fabric" data-tags="sensible lavage">
+          <div class="swatch s-coton" role="img" aria-label="Échantillon de coton tissé"></div>
+          <div>
+            <h3>Coton biologique</h3>
+            <p>Doux et respirant, pour le linge porté à même la peau.</p>
+            <dl><dt>Usage :</dt><dd>vêtements, draps, layette</dd><dt>Entretien :</dt><dd>lavable à 60 °C</dd></dl>
+          </div>
+        </article>
+
+        <article class="fabric" data-tags="acariens lavage">
+          <div class="swatch s-micro" role="img" aria-label="Échantillon de microfibre à trame serrée"></div>
+          <div>
+            <h3>Microfibre à trame serrée</h3>
+            <p>Un tissage très dense qui limite le passage des acariens.</p>
+            <dl><dt>Usage :</dt><dd>housses de matelas, oreillers, couettes</dd><dt>Entretien :</dt><dd>lavable à 60 °C</dd></dl>
+          </div>
+        </article>
+
+        <article class="fabric" data-tags="sensible">
+          <div class="swatch s-bambou" role="img" aria-label="Échantillon de viscose de bambou"></div>
+          <div>
+            <h3>Viscose de bambou</h3>
+            <p>Toucher fluide et doux, apprécié des peaux réactives.</p>
+            <dl><dt>Usage :</dt><dd>sous-vêtements, pyjamas, linge de lit</dd><dt>Entretien :</dt><dd>lavage délicat</dd></dl>
+          </div>
+        </article>
+
+        <article class="fabric" data-tags="medical lavage">
+          <div class="swatch s-medical" role="img" aria-label="Échantillon de tissu médical coton-polyester"></div>
+          <div>
+            <h3>Coton-polyester médical</h3>
+            <p>Résiste aux lavages fréquents pour les blouses, draps et protections.</p>
+            <dl><dt>Usage :</dt><dd>soins, établissements de santé</dd><dt>Entretien :</dt><dd>lavages répétés à haute température</dd></dl>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="engagements" class="band">
+    <div class="wrap">
+      <h2>Nos engagements</h2>
+      <div class="commit">
+        <div><h3>Composition claire</h3><p>Chaque tissu est présenté avec sa composition et ses conditions d'entretien.</p></div>
+        <div><h3>Certifications</h3><p>Indiquez ici vos labels (par exemple OEKO-TEX® ou GOTS) une fois obtenus et vérifiés.</p></div>
+        <div><h3>Échantillons</h3><p>Touchez avant de choisir : un échantillon est envoyé sur demande.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap contact">
+      <div>
+        <h2>Demander un échantillon</h2>
+        <p class="lead">Écrivez-nous en précisant votre besoin, nous vous répondons rapidement.</p>
+        <a class="btn primary" href="mailto:contact@exemple.fr?subject=Demande%20d%27%C3%A9chantillon">Écrire un e-mail</a>
+      </div>
+      <div>
+        <p><strong>Pour nous aider à vous conseiller, indiquez :</strong></p>
+        <ul>
+          <li>l'usage (vêtement, literie, usage médical…)</li>
+          <li>la quantité souhaitée</li>
+          <li>votre adresse d'envoi</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Ces textiles ne remplacent pas un avis médical. En cas d'allergie ou de maladie de peau, demandez conseil à un professionnel de santé.</p>
+    <p>© Textiles Sensibles</p>
+  </div>
+</footer>
+
+<script>
+  const buttons = document.querySelectorAll('.filters button');
+  const items = document.querySelectorAll('.fabric');
+  const count = document.getElementById('count');
+  function apply(filter) {
+    let shown = 0;
+    items.forEach(el => {
+      const ok = filter === 'tous' || el.dataset.tags.split(' ').includes(filter);
+      el.hidden = !ok;
+      if (ok) shown++;
+    });
+    count.textContent = shown + (shown > 1 ? ' tissus affichés' : ' tissu affiché');
+  }
+  buttons.forEach(b => b.addEventListener('click', () => {
+    buttons.forEach(x => x.setAttribute('aria-pressed', x === b));
+    apply(b.dataset.filter);
+  }));
+  apply('tous');
+</script>
+</body>
+</html>
